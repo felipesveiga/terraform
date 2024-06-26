@@ -118,9 +118,9 @@ resource "aws_nat_gateway" "nat_gateway" {
 
 # Provisioning an Ec2 instance
 resource "aws_instance" "web" {
-  ami                    = "ami-01b799c439fd5516a"
-  instance_type          = "t2.micro"
-  subnet_id              = aws_subnet.public_subnets["public_subnet_1"].id
+  ami           = "ami-01b799c439fd5516a"
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.public_subnets["public_subnet_1"].id
   tags = {
     "Teste" = "Felipe"
   }
