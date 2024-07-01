@@ -126,9 +126,14 @@ resource "aws_instance" "web" {
   }
 }
 
+# Random ID.
+resource "random_id" "random_s3_id" {
+	byte_length=16
+}
+
 # Creating an S3 bucket.
 resource "aws_s3_bucket" "my_s3_bucket" {
-  bucket = "felipesveiga-test-bucket"
+  bucket = "felipesveiga-${random_id.random_s3_id.hex}"
 
   tags = {
     Name = "Nowhere Man"
