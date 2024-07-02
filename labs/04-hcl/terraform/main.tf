@@ -128,7 +128,7 @@ resource "aws_instance" "web" {
 
 # Random ID.
 resource "random_id" "random_s3_id" {
-	byte_length=16
+  byte_length = 16
 }
 
 # Creating an S3 bucket.
@@ -156,4 +156,16 @@ resource "aws_security_group" "my_security_group" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+
+resource "aws_subnet" "variables-subnet" {
+	vpc_id = aws_vpc.vpc.id
+	cidr_block = var.variables_sub_cidr
+	availability_zone=var.variables_sub_az
+	map_public_ip_on_launch=var.variables_sub_auto_ip
+
+	tags = {
+		Name="variables-subnet-${var.variables_sub_az}"
+		terraform="true"
+		}
 }
