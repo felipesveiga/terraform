@@ -32,17 +32,23 @@ variable "public_subnets" {
 variable "variables_sub_cidr" {
   description = "CIDR Block for Variables Subnet"
   type        = string
-default = "10.0.202.0/24" 
+  default     = "10.0.202.0/24"
 }
 
 variable "variables_sub_az" {
   description = "Availability Zone for Variables Subnet"
   type        = string
-default="us-east-1"
+  default     = "us-east-1"
 }
 
 variable "variables_sub_auto_ip" {
   description = "Set Automatic IP Assignment for Variables Subnet"
   type        = bool
-default=true
+  default     = true
+}
+
+variable "environment" {
+	description="Deployment Environment Name"
+	type=string
+	default="dev"
 }
