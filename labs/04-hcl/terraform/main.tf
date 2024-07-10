@@ -9,9 +9,9 @@ data "aws_region" "current" {}
 
 # Local variables.
 locals {
-	team="api_mgmt_dev"
-	application="corp_api"
-	server_name="ec2-${var.environment}-api-${var.variables_sub_az}"
+  team        = "api_mgmt_dev"
+  application = "corp_api"
+  server_name = "ec2-${var.environment}-api-${var.variables_sub_az}"
 }
 
 #Define the VPC
@@ -22,6 +22,7 @@ resource "aws_vpc" "vpc" {
     Name        = var.vpc_name
     Environment = "demo_environment"
     Terraform   = "true"
+    Region      = data.aws_region.current.name
   }
 }
 
@@ -129,9 +130,9 @@ resource "aws_instance" "web" {
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.public_subnets["public_subnet_1"].id
   tags = {
-	Owner=local.team
-	Name=local.server_name
-	App=local.application
+    Owner = local.team
+    Name  = local.server_name
+    App   = local.application
   }
 }
 
