@@ -11,11 +11,12 @@ resource "aws_instance" "web" {
   instance_type          = var.size
   subnet_id              = var.subnet_id
   vpc_security_group_ids = var.security_groups
+  tags = {
+    "Name"        = "Server from Module"
+    "Environment" = "Training"
+  }
 }
-tags = {
-  "Name"        = "Server from Module"
-  "Environment" = "Training"
-}
+
 output "public_ip" {
   value = aws_instance.web.public_ip
 }
