@@ -1,13 +1,6 @@
 terraform {
   required_version = ">= 1.0.0"
 
-  backend "remote" {
-    hostname     = "app.terraform.io"
-    organization = "Veiga_LTDA"
-    workspaces {
-      name = "my-aws-app"
-    }
-  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
