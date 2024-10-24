@@ -125,3 +125,10 @@ resource "aws_key_pair" "generated" {
     ignore_changes = [key_name]
   }
 }
+
+resource "aws_subnet" "list_subnet" {
+  for_each = var.ip
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = each.value
+  availability_zone = var.us-east-1-azs[0]
+}
