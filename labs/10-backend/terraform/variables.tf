@@ -50,7 +50,7 @@ variable "variables_sub_auto_ip" {
 variable "environment" {
   description = "Deployment Environment Name"
   type        = string
-  default     = var.environment
+  default     = "dev"
 }
 
 variable "us-east-1-azs" {
@@ -68,5 +68,19 @@ variable "ip" {
   default = {
     prod = "10.0.150.0/24"
     dev  = "10.0.250.0/24"
+  }
+}
+
+variable "env" {
+  type = map(any)
+  default = {
+    prod = {
+      ip = "10.0.150.0/24"
+      az = "us-east-1a"
+    }
+    dev = {
+      ip = "10.0.250.0/24"
+      az = "us-east-1e"
+    }
   }
 }
