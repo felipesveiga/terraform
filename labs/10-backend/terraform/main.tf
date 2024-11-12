@@ -58,6 +58,11 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.public_subnets["public_subnet_1"].id
+  
+  lifecycle {
+    create_before_destroy = true
+  }
+
   tags = {
     Owner = local.team
     Name  = local.server_name
